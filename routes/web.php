@@ -15,7 +15,7 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
+Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('profile');
 Route::get('/tours', [HomeController::class, 'tours'])->name('tours')->middleware('auth');
 
 

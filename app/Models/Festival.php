@@ -10,7 +10,12 @@ class Festival extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nombre', 
-        'puntos'
+        'name', 
+        'points'
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

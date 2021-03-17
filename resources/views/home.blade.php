@@ -7,32 +7,27 @@
             <h1 class="display-4 text-center"><u>Ranking DJs</u></h1>
         </div>
         
+        @foreach ($users as $user)
         <div class="col-md-8 mx-auto">
             <div class="card bg-dark text-white mb-3">
-                <img class="card-img" src="{{ asset('images/dj1.jpg') }}" alt="Card image">
+                @if(empty($user->image_src))
+                    <img class="card-img" src="{{ asset( 'images/example.jpg') }}" alt="Card image">
+                @else
+                    <img class="card-img" src="{{ asset('images/' .$user->image_src) }}" alt="Card image">
+                @endif
                 <div class="card-img-overlay">
-                    <h1 class="card-title text-right font-weight-bold"><a href=" {{ route('profile') }}"> Dj Alex</a></h1>
-                    <h1 class="card-title text-right font-weight-bold"># 1</h1>
-                    <h1 class="card-title text-right font-weight-bold">Puntos 98</h1>
+                    <h1 class="card-title text-right font-weight-bold"><a href=" {{ route('profile', $user->id) }}">{{ $user->name}}</a></h1>
+                    <h1 class="card-title text-right font-weight-bold">#{{ $loop->iteration  }}</h1>
+                    @if(empty($user->festivals_sum_points))
+                        <h1 class="card-title text-right font-weight-bold"> 0 Pts.</h1>
+                    @else
+                        <h1 class="card-title text-right font-weight-bold">{{ $user->festivals_sum_points}} Pts.</h1>
+                    @endif
                 </div>
-            </div>
-            <div class="card bg-dark text-white mb-3">
-                <img class="card-img" src="{{ asset('images/dj2.jpeg') }}" alt="Card image">
-                <div class="card-img-overlay">
-                    <h1 class="card-title text-right font-weight-bold"><a href="#"> Dj Alex</a></h1>
-                    <h1 class="card-title text-right font-weight-bold"># 1</h1>
-                    <h1 class="card-title text-right font-weight-bold">Puntos 98</h1>
-                </div>
-            </div>
-            <div class="card bg-dark text-white mb-3">
-                <img class="card-img" src="{{ asset('images/dj3.jpg') }}" alt="Card image">
-                <div class="card-img-overlay">
-                    <h1 class="card-title text-right font-weight-bold"><a href="#"> Dj Alex</a></h1>
-                    <h1 class="card-title text-right font-weight-bold"># 1</h1>
-                    <h1 class="card-title text-right font-weight-bold">Puntos 98</h1>
-                </div>
-            </div>
+            </div>  
         </div>
+        @endforeach
+
     </div>
 </main>
 
