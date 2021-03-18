@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        User::create([
             'name' => 'Alex DJ',
             'age' => 24,
             'email' => 'alexDJ@gmail.com',
@@ -23,9 +24,9 @@ class UserSeeder extends Seeder
             'image_src' => 'dj1.jpg',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
+        ])->assignRole('dj');
         
-        DB::table('users')->insert([
+        User::create([
             'name' => 'Roman DJ',
             'age' => 29,
             'email' => 'romanDJ@gmail.com',
@@ -33,9 +34,9 @@ class UserSeeder extends Seeder
             'image_src' => 'dj2.jpeg',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
+        ])->assignRole('dj');
         
-        DB::table('users')->insert([
+        User::create([
             'name' => 'Tao DJ',
             'age' => 35,
             'email' => 'taoDJ@gmail.com',
@@ -43,6 +44,6 @@ class UserSeeder extends Seeder
             'image_src' => 'dj3.jpg',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
+        ])->assignRole('dj');
     }
 }
